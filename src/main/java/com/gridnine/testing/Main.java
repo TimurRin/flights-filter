@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO: implement FilterTotalGroundTime filter, optimization, tests
+        // TODO: optimization, tests, comments
 
         // Unfiltered flights
         List<Flight> flights = FlightBuilder.createFlights();
@@ -32,20 +32,19 @@ public class Main {
         for (Flight flight : flightsDepartureBeforeArrival) {
             System.out.println(flight);
         }
-//
-//        // исключить: общее время, проведённое на земле превышает два часа
-//        System.out.println("\nLess-two-hours-total-ground-time flights:");
-//        Filter filterLessTwoHoursTotalGroundTime = new FilterTotalGroundTime(7200);
-//        List<Flight> flightsLessTwoHoursTotalGroundTime = new FilterBuilder(filterLessTwoHoursTotalGroundTime).filter(flights);
-//
-//        for (Flight flight : flightsLessTwoHoursTotalGroundTime) {
-//            System.out.println(flight);
-//        }
+
+        // исключить: общее время, проведённое на земле превышает два часа
+        System.out.println("\nLess-two-hours-total-ground-time flights:");
+        Filter filterLessTwoHoursTotalGroundTime = new FilterTotalGroundTime(7200);
+        List<Flight> flightsLessTwoHoursTotalGroundTime = new FilterBuilder(filterLessTwoHoursTotalGroundTime).filter(flights);
+
+        for (Flight flight : flightsLessTwoHoursTotalGroundTime) {
+            System.out.println(flight);
+        }
 
         // применяем все фильтры сразу
-        System.out.println("\nApplying every filter used before:");
-//        List<Flight> flightsFiltered = new FilterBuilder(filterUpcoming, filterDepartureBeforeArrival, filterLessTwoHoursTotalGroundTime).filter(flights);
-        List<Flight> flightsFiltered = new FilterBuilder(filterUpcoming, filterDepartureBeforeArrival).filter(flights);
+        System.out.println("\nApplying every filter we used before:");
+        List<Flight> flightsFiltered = new FilterBuilder(filterUpcoming, filterDepartureBeforeArrival, filterLessTwoHoursTotalGroundTime).filter(flights);
 
         for (Flight flight : flightsFiltered) {
             System.out.println(flight);
