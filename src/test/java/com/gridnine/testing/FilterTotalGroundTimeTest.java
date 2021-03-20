@@ -59,31 +59,31 @@ public class FilterTotalGroundTimeTest {
     }
 
     @Test
-    @DisplayName("Flight grounded once for one hours should pass")
+    @DisplayName("Flight grounded once for two hours should pass")
     void shouldPassIfFlightGroundedOnceForTwoHours() {
         assertTrue(filter.isPassing(flightGroundedOnceForTwoHours), getGroundedTimeString());
     }
 
     @Test
-    @DisplayName("Flight grounded once for one hours should fail")
+    @DisplayName("Flight grounded once for three hours should fail")
     void shouldFailIfFlightGroundedOnceForThreeHours() {
         assertFalse(filter.isPassing(flightGroundedOnceForThreeHours), getGroundedTimeString());
     }
 
     @Test
-    @DisplayName("Flight grounded twice for one hours should pass")
+    @DisplayName("Flight grounded twice for total two hours should pass")
     void shouldPassIfFlightGroundedTwiceForTwoHours() {
         assertTrue(filter.isPassing(flightGroundedTwiceForTwoHours), getGroundedTimeString());
     }
 
     @Test
-    @DisplayName("Flight grounded twice for one hours should fail")
+    @DisplayName("Flight grounded twice for total three hours should fail")
     void shouldFailIfFlightGroundedTwiceForThreeHours() {
         assertFalse(filter.isPassing(flightGroundedTwiceForThreeHours), getGroundedTimeString());
     }
 
     @Test
-    @DisplayName("Flight grounded twice for six hours should fail")
+    @DisplayName("Flight grounded twice for total six hours should fail")
     void shouldFailIfFlightGroundedTwiceForSixHours() {
         assertFalse(filter.isPassing(flightGroundedTwiceForSixHours), getGroundedTimeString());
     }
