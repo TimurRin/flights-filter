@@ -11,11 +11,11 @@ public class FilterDepartureByTime implements Filter {
 
     public boolean isPassing(Flight flight) {
         for (Segment segment : flight.getSegments()) {
-            if (segment.getDepartureDate().isAfter(dateTime)) {
-                return true;
+            if (segment.getDepartureDate().isBefore(dateTime)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public FilterType getType() {
