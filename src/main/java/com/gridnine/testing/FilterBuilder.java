@@ -1,15 +1,40 @@
 package com.gridnine.testing;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FilterBuilder {
-    private List<Filter> filters;
+    private Filter[] filters = new Filter[FilterType.values().length];
 
-    FilterBuilder(final Filter... filters) {
-        this.filters = new ArrayList<>(filters.length);
-        this.filters.addAll(Arrays.asList(filters));
+    FilterBuilder() {
+        reset();
+    }
+
+    FilterBuilder(final Filter... newFilters) {
+        replace(newFilters);
+    }
+
+    Filter get(FilterType filterType) {
+        return filters[filterType.ordinal()];
+    }
+
+    void add(final Filter... newFilters) {
+        for (Filter filter : newFilters) {
+            filters[filter.getType().ordinal()] = filter; // replace old filters of the same type
+        }
+    }
+
+    void replace(final Filter... newFilters) {
+        reset();
+        add(newFilters);
+    }
+
+    void remove(FilterType filterType) {
+        filters[filterType.ordinal()] = null;
+    }
+
+    void reset() {
+        filters = new Filter[FilterType.values().length];
     }
 
     List<Flight> filter(List<Flight> unfilteredFlights) {
@@ -17,9 +42,11 @@ public class FilterBuilder {
         for (Flight flight : unfilteredFlights) {
             boolean isFlightPassing = true;
             for (Filter filter : filters) {
-                if (!filter.isPassing(flight)) {
-                    isFlightPassing = false;
-                    break;
+                if (filter != null) {
+                    if (!filter.isPassing(flight)) {
+                        isFlightPassing = false;
+                        break;
+                    }
                 }
             }
             if (isFlightPassing) {

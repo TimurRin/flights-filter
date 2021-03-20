@@ -2,7 +2,7 @@ package com.gridnine.testing;
 
 import java.time.LocalDateTime;
 
-public class FilterDepartureByTime extends Filter {
+public class FilterDepartureByTime implements Filter {
     private LocalDateTime dateTime;
 
     FilterDepartureByTime(LocalDateTime dateTime) {
@@ -16,5 +16,9 @@ public class FilterDepartureByTime extends Filter {
             }
         }
         return false;
+    }
+
+    public FilterType getType() {
+        return FilterType.DEPARTURE_BY_TIME;
     }
 }

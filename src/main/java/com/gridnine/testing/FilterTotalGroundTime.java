@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class FilterTotalGroundTime extends Filter {
+public class FilterTotalGroundTime implements Filter {
     private long groundTime;
 
     FilterTotalGroundTime(long groundTime) {
@@ -29,5 +29,9 @@ public class FilterTotalGroundTime extends Filter {
         }
 
         return groundTime <= this.groundTime;
+    }
+
+    public FilterType getType() {
+        return FilterType.TOTAL_GROUND_TIME;
     }
 }
