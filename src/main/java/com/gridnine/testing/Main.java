@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO: optimization, tests, comments
-
         // Unfiltered flights
         List<Flight> flights = FlightBuilder.createFlights();
 

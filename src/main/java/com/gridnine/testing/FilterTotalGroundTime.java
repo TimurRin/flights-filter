@@ -4,7 +4,13 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+/**
+ * Filters flights which have total ground time is less or equal to specified time
+ */
 public class FilterTotalGroundTime implements Filter {
+    /**
+     * Total ground time in seconds
+     */
     private long groundTime;
 
     FilterTotalGroundTime(long groundTime) {

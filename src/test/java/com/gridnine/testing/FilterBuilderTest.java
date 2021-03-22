@@ -3,6 +3,9 @@ package com.gridnine.testing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -10,7 +13,7 @@ public class FilterBuilderTest {
     FilterBuilder filterBuilder;
 
     @BeforeEach
-    void setUp() {
+    void createFilter() {
         filterBuilder = new FilterBuilder();
     }
 
@@ -68,5 +71,45 @@ public class FilterBuilderTest {
 
         assertNull(filterBuilder.get(FilterType.DEPARTURE_BEFORE_ARRIVAL));
         assertNull(filterBuilder.get(FilterType.TOTAL_GROUND_TIME));
+    }
+
+    private void applyAllFilters() {
+        filterBuilder.replace(new FilterDepartureByTime(LocalDateTime.now()), new FilterDepartureBeforeArrival(), new FilterTotalGroundTime(7200));
+    }
+
+    @Test
+    void testFlights1k() {
+        List<Flight> flights = FlightBuilder.createFlightsBulk(1000);
+
+        applyAllFilters();
+
+        filterBuilder.filter(flights);
+    }
+
+    @Test
+    void testFlights10k() {
+        List<Flight> flights = FlightBuilder.createFlightsBulk(10000);
+
+        applyAllFilters();
+
+        filterBuilder.filter(flights);
+    }
+
+    @Test
+    void testFlights100k() {
+        List<Flight> flights = FlightBuilder.createFlightsBulk(100000);
+
+        applyAllFilters();
+
+        filterBuilder.filter(flights);
+    }
+
+    @Test
+    void testFlights1000k() {
+        List<Flight> flights = FlightBuilder.createFlightsBulk(1000000);
+
+        applyAllFilters();
+
+        filterBuilder.filter(flights);
     }
 }
