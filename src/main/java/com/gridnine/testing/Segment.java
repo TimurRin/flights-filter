@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Bean that represents a flight segment.
  */
-public class Segment {
+class Segment {
     private final LocalDateTime departureDate;
 
     private final LocalDateTime arrivalDate;

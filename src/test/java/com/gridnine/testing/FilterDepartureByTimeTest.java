@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FilterDepartureByTimeTest {
+class FilterDepartureByTimeTest {
 
     private Filter filter;
 
@@ -19,7 +20,7 @@ public class FilterDepartureByTimeTest {
     private Flight flightOutdatedMultiSegmented;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         LocalDateTime now = LocalDateTime.now();
 
         filter = new FilterDepartureByTime(now);

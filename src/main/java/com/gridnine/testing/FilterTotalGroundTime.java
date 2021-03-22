@@ -11,7 +11,7 @@ public class FilterTotalGroundTime implements Filter {
     /**
      * Total ground time in seconds
      */
-    private long groundTime;
+    private final long groundTime;
 
     FilterTotalGroundTime(long groundTime) {
         this.groundTime = groundTime;

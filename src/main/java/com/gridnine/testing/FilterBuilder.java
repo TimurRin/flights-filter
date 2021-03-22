@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * A
  */
-public class FilterBuilder {
+class FilterBuilder {
     private Filter[] filters = new Filter[FilterType.values().length];
 
     FilterBuilder() {
@@ -47,7 +47,7 @@ public class FilterBuilder {
      *
      * @param filterType FilterType to remove
      */
-    void remove(FilterType filterType) {
+    void remove(@SuppressWarnings("SameParameterValue") FilterType filterType) {
         filters[filterType.ordinal()] = null;
     }
 

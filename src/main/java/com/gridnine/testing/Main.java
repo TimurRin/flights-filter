@@ -3,7 +3,7 @@ package com.gridnine.testing;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         // Unfiltered flights
         List<Flight> flights = FlightBuilder.createFlights();

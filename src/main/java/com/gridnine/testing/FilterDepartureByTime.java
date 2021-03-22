@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
  * Filters flights which have every segment's departure time after specific date and time
  */
 public class FilterDepartureByTime implements Filter {
-    private LocalDateTime dateTime;
+    private final LocalDateTime dateTime;
 
     FilterDepartureByTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;

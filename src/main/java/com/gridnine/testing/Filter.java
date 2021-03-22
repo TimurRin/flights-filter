@@ -1,6 +1,6 @@
 package com.gridnine.testing;
 
-public interface Filter {
+interface Filter {
     /**
      * Is used to check if Flight meets the filter requirement
      *

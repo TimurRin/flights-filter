@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FilterTotalGroundTimeTest {
+class FilterTotalGroundTimeTest {
 
-    private long groundedTime = 7200;
+    private final long groundedTime = 7200;
 
     private Filter filter;
 
@@ -26,7 +26,7 @@ public class FilterTotalGroundTimeTest {
     private Flight flightNotGrounded;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         filter = new FilterTotalGroundTime(groundedTime);
 
         LocalDateTime now = LocalDateTime.now();
